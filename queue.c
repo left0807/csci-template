@@ -41,8 +41,10 @@ queueElementT Dequeue(queueADT queue){
         exit(EXIT_FAILURE);
     }
     result = queue->front->value;
+    cellT *to_be_free = queue->front;
     queue->front = queue->front->next;
     queue->SIZE--;
+    free(to_be_free);
     return result;
 }
 
@@ -65,4 +67,6 @@ int QueueIsEmpty(queueADT queue){
 //         int u = Dequeue(queue);
 //         printf("%d %d\n", u, QueueLength(queue));
 //     }
+
+//     free(queue);
 // };
